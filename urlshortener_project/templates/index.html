@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bookmarks</title>
+  </head>
+  <body>
+  <div class="container">
+
+
+<h1>Bookmarks</h1>
+
+<h4>{{ request.user }}</h4>
+
+<a href="{% url 'user_create_view' %}">CreateUser</a>
+<a href="{% url 'login' %}">Login</a>
+<a href="{% url 'sim_bm_create_view' %}">Sim</a>
+<a href="{% url 'logout' %}?next={% url 'login' %}">logout</a>
+
+    <p>
+      Add bookmarks
+    </p>
+
+
+</div>
+</body>
+</html>

@@ -14,3 +14,7 @@ class UserCreateView(CreateView):
 
 class IndexView(TemplateView):
         template_name = 'index.html'
+
+
+class BookmarkSim(TemplateView):
+        template_name = 'sim_create_bookmark.html'
