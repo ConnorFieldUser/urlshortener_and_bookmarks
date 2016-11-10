@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView
 
 from bookmark_app.models import Bookmark, Profile
@@ -43,4 +43,8 @@ class BookmarkUpdateView(UpdateView):
 
 
 class ProfileDetailView(DetailView):
+    model = Profile
+
+
+class ProfileListView(ListView):
     model = Profile
