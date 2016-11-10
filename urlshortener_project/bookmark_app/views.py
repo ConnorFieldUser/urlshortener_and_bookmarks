@@ -5,6 +5,9 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from bookmark_app.models import Bookmark, Profile
 
+import string
+from random import shuffle
+
 # Create your views here.
 
 
@@ -27,6 +30,13 @@ class BookmarkCreateView(CreateView):
         instance = form.save(commit=False)
         instance.user = self.request.user
         return super().form_valid(form)
+
+    # for letter in string.ascii_letters:
+    #     list.append(letter)
+    #
+    #     shuffle(list)
+    #
+    #     new_list = (list[0:5])
 
 
 class BookmarkUpdateView(UpdateView):
