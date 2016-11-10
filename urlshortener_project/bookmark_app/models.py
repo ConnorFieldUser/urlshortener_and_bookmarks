@@ -14,6 +14,10 @@ class Profile(models.Model):
     user = models.OneToOneField('auth.User')
     created = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def bookmarks(self):
+        return Bookmark.objects.filter(user=self.user)
+
     def __str__(self):
         return str(self.user)
 
@@ -29,8 +33,8 @@ def create_user_profile(**kwargs):
 class Bookmark(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=50)
-    url = models.CharField(max_length=60)
-    newrl = models.CharField(max_length=20)
+    url = models.URLField(max_length=60)
+    newrl = models.URLField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     private = models.BooleanField()

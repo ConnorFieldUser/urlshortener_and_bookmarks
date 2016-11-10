@@ -38,8 +38,8 @@ class BookmarkUpdateView(UpdateView):
     success_url = "/"
     fields = ('title', 'description', 'url', 'newrl', 'private')
 
-    # def get_object(self):
-    #     return Bookmark.objects.get(pk=self.request.GET.get('pk'), self.request.user)
+    def get_object(self):
+        return Bookmark.objects.get(pk=self.kwargs.get('pk'), user=self.request.user)
 
 
 class ProfileDetailView(DetailView):
