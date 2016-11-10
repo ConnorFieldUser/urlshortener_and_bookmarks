@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
+<h2>All Users:</h2>
 {% for object in object_list %}
-<p>
-  p
+<h4>
+  <hr>
   <a href="{% url 'profile_detail_view' object.id %}">{{ object }}</a>
-</p>
+</h4>
 {% endfor %}
 
 {% endblock %}

@@ -6,8 +6,16 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
-    
-<div class="container">
+    <div class="container">
+
+
+    <h4>{{ request.user }}</h4>
+
+    <a href="{% url 'user_create_view' %}">CreateUser</a>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'logout' %}?next={% url 'login' %}">logout</a>
+    <a href="{% url 'bookmark_create_view' %}">create_bookmark</a>
+
 {% block content %}
 {% endblock %}
 </div>

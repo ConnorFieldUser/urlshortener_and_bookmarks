@@ -18,10 +18,6 @@ class IndexView(TemplateView):
         template_name = 'index.html'
 
 
-class BookmarkSim(TemplateView):
-        template_name = 'sim_create_bookmark.html'
-
-
 class BookmarkCreateView(CreateView):
     model = Bookmark
     success_url = "/"
