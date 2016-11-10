@@ -1,5 +1,8 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
+
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
@@ -29,5 +32,5 @@ class Bookmark(models.Model):
     url = models.CharField(max_length=60)
     newrl = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
-    profile = models.ForeignKey(Profile)
+    user = models.ForeignKey(User)
     private = models.BooleanField()
