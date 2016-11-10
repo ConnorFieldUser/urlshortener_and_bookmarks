@@ -6,17 +6,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 
-class Bookmark(models.Model):
-    title = models.CharField(max_length=20)
-    description = models.CharField(max_length=50)
-    url = models.CharField(max_length=60)
-    newrl = models.CharField(max_length=20)
-    created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey('auth.User')
-    private = models.BooleanField()
-
-
-class Account(models.Model):
+class Profile(models.Model):
 
     user = models.OneToOneField('auth.User')
     created = models.DateTimeField(auto_now_add=True)
@@ -30,4 +20,14 @@ def create_user_profile(**kwargs):
     created = kwargs.get('created')
     instance = kwargs.get('instance')
     if created:
-        Account.objects.create(user=instance)
+        Profile.objects.create(user=instance)
+
+
+class Bookmark(models.Model):
+    title = models.CharField(max_length=20)
+    description = models.CharField(max_length=50)
+    url = models.CharField(max_length=60)
+    newrl = models.CharField(max_length=20)
+    created = models.DateTimeField(auto_now_add=True)
+    profile = models.ForeignKey(Profile)
+    private = models.BooleanField()
