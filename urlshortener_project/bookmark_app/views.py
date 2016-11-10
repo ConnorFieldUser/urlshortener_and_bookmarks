@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic import TemplateView, DetailView
+from django.views.generic.edit import CreateView, UpdateView
 
-from bookmark_app.models import Bookmark
+from bookmark_app.models import Bookmark, Profile
 
 # Create your views here.
 
@@ -24,9 +24,23 @@ class BookmarkSim(TemplateView):
 
 class BookmarkCreateView(CreateView):
     model = Bookmark
+    success_url = "/"
     fields = ('title', 'description', 'url', 'newrl', 'private')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.user = self.request.user
         return super().form_valid(form)
+
+
+class BookmarkUpdateView(UpdateView):
+    model = Bookmark
+    success_url = "/"
+    fields = ('title', 'description', 'url', 'newrl', 'private')
+
+    # def get_object(self):
+    #     return Bookmark.objects.get(pk=self.request.GET.get('pk'), self.request.user)
+
+
+class ProfileDetailView(DetailView):
+    model = Profile

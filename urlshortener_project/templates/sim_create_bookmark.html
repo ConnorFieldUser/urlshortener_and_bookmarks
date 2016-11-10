@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>BookmarX</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+{% block content %}
 
 
 {% if request.user.is_authenticated %}
@@ -25,8 +20,4 @@ nope
 
 else:
 
-
-
-
-  </body>
-</html>
+{% endblock %}

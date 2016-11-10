@@ -34,3 +34,6 @@ class Bookmark(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     private = models.BooleanField()
+
+    def __str__(self):
+        return str(self.title)
