@@ -29,11 +29,13 @@ class BookmarkCreateView(CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.user = self.request.user
+        list = []
         for letter in string.ascii_letters:
             list.append(letter)
             shuffle(list)
             new_list = (list[0:5])
-        instance.newrl = new_list
+            string_code = "".join(new_list)
+        instance.newrl = string_code
         return super().form_valid(form)
 
 
