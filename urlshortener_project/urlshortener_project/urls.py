@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from bookmark_app.views import UserCreateView, IndexView, BookmarkCreateView, BookmarkUpdateView, ProfileDetailView, ProfileListView
+from bookmark_app.views import UserCreateView, IndexView, BookmarkCreateView, BookmarkUpdateView, ProfileDetailView, ProfileListView, BookmarkDetailView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^create_bookmark/$', BookmarkCreateView.as_view(), name="bookmark_create_view"),
     url(r'^update_bookmark/(?P<pk>\d+)/$', BookmarkUpdateView.as_view(), name="bookmark_update_view"),
     url(r'^profiles/$', ProfileListView.as_view(), name="profile_list_view"),
-    url(r'^profile/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view")
+    url(r'^profile/(?P<pk>\d+)/$', ProfileDetailView.as_view(), name="profile_detail_view"),
+    url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDetailView.as_view(), name="bookmark_detail_view")
 ]

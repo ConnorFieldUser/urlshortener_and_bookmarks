@@ -4,10 +4,11 @@
 <h2>
 {{ profile }}
 </h2>
+<hr>
 {% for bookmark in object.bookmarks %}
 <h3>
 
-  <a href="#">{{ bookmark }}</a>
+  <a href="{% url 'bookmark_detail_view' bookmark.id %}">{{ bookmark }}</a>
 </h3>
 <p>
   details
@@ -16,6 +17,4 @@
 <hr>
 {% endfor %}
 
-
-finish
 {% endblock %}

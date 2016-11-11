@@ -24,19 +24,17 @@ class IndexView(TemplateView):
 class BookmarkCreateView(CreateView):
     model = Bookmark
     success_url = "/"
-    fields = ('title', 'description', 'url', 'newrl', 'private')
+    fields = ('title', 'description', 'url', 'private')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.user = self.request.user
+        for letter in string.ascii_letters:
+            list.append(letter)
+            shuffle(list)
+            new_list = (list[0:5])
+        instance.newrl = new_list
         return super().form_valid(form)
-
-    # for letter in string.ascii_letters:
-    #     list.append(letter)
-    #
-    #     shuffle(list)
-    #
-    #     new_list = (list[0:5])
 
 
 class BookmarkUpdateView(UpdateView):
@@ -46,6 +44,10 @@ class BookmarkUpdateView(UpdateView):
 
     def get_object(self):
         return Bookmark.objects.get(pk=self.kwargs.get('pk'), user=self.request.user)
+
+
+class BookmarkDetailView(DetailView):
+    model = Bookmark
 
 
 class ProfileDetailView(DetailView):
