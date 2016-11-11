@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView
 
 from bookmark_app.models import Bookmark, Profile
@@ -17,8 +17,12 @@ class UserCreateView(CreateView):
     success_url = "/"
 
 
-class IndexView(TemplateView):
-        template_name = 'index.html'
+class IndexView(ListView):
+    template_name = 'index.html'
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            return Bookmark.objects.filter(user=self.request.user)
 
 
 class BookmarkCreateView(CreateView):

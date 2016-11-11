@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Bookmarks</h1>
+<h1>Your Bookmarks</h1>
 
 
-    <p>
-      Add bookmarks
-    </p>
+<p>
+  {% if object_list %}
+{% for bookmark in object_list %}
+<h3>
 
+  <a href="{% url 'bookmark_detail_view' bookmark.id %}">{{ bookmark }}</a>
+</h3>
 
+<hr>
+{% endfor %}
+</p>
+{% endif %}
 {% endblock %}
