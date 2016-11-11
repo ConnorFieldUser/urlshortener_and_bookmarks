@@ -6,6 +6,9 @@
 </h2>
 <hr>
 {% for bookmark in object.bookmarks %}
+
+{% if bookmark.user == request.user or not bookmark.private%}
+
 <h3>
 
   <a href="{% url 'bookmark_detail_view' bookmark.id %}">{{ bookmark }}</a>
@@ -15,6 +18,7 @@
 </p>
 
 <hr>
+{% endif %}
 {% endfor %}
 
 {% endblock %}

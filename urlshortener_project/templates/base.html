@@ -15,6 +15,7 @@
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'logout' %}?next={% url 'login' %}">logout</a>
     <a href="{% url 'bookmark_create_view' %}">create_bookmark</a>
+    <a href="{% url 'profile_list_view' %}">Users</a>
 
 {% block content %}
 {% endblock %}

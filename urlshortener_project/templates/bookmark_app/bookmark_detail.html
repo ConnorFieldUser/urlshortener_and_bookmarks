@@ -1,3 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
+
+{% if bookmark.user == request.user or not bookmark.private  %}
+
+<h3>Created by: {{ bookmark.user }}</h3>
+{% if bookmark.private %}
+Private
+{% else %}
+Public
+{% endif %}
+{% else %}
+
+<h3>Sorry! This page is private.</h3>
+
+{% endif %}
+
+
+<hr>
+<div class="panel panel-default">
+<div class="panel-heading"><h4>
+  <a href="#">{{ bookmark.title }}</a>
+</h4></div>
+  <div class="panel-body">
+    {{ bookmark.description }}
+  </p>
+
+  <p>
+  <a href="#">{{ bookmark.newrl }}</a>
+  </p>
+</div>
+</div>
+
+<p>
+
+
+  <ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="{% url 'bookmark_update_view' bookmark.id %}">Edit Bookmark</a></li>
+</ul>
+<hr>
+</p>
+
+
+
 {% endblock %}
